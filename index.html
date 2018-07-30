@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    bio-head
+  </title>
+  <meta name="description" content="bio-head">
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.14/dist/aframe-orbit-controls-component.min.js"></script>
+  <!-- aframe extras -->
+  <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.4/dist/aframe-extras.min.js"></script> -->
+  <!-- webcomponentsjs -->
+  <!-- <script src="https://cdn.rawgit.com/webcomponents/webcomponentsjs/v0.7.24/webcomponents-lite.min.js"></script> -->
+  <!-- LRNWebComponents -->
+  <!-- <link href="https://cdn.rawgit.com/LRNWebComponents/build/0.2.0/build/default/build.html" rel="import" /> -->
+  <!-- include ar.js for A-Frame -->
+  <!-- <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script> -->
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="tree-obj" src="assets/FINALBiohead.obj"></a-asset-item>
+      <a-asset-item id="tree-mtl" src="assets/FINALBiohead.mtl"></a-asset-item>
+    </a-assets>
+    <a-entity id="target" scale="5 5 5" position="0 1.5 0" material="transparent:true">
+      <a-entity scale=".01 .01 .01" obj-model="obj: #tree-obj; mtl: #tree-mtl" rotation="-90 0 0"></a-entity>
+    </a-entity>
+    <a-entity id="camera" camera="fov: 80; zoom: 1;" position="0 2 5" orbit-controls="
+        autoRotate: false;
+        target: #target;
+        enableDamping: true;
+        dampingFactor: 0.125;
+        rotateSpeed:0.25;
+        minDistance:1;
+        maxDistance:100;
+        " mouse-cursor="">
+      <a-entity geometry="primitive:cone; radius-bottom:1; radius-top:0" scale=".33 1 .33" position="0 0 0" rotation="90 0 0" material="color: #0099ff; transparent: true; opacity:0.5"></a-entity>
+    </a-entity>
+    <a-sky color="#ECECEC"></a-sky>
+  </a-scene>
+  <script src="app.js"></script>
+</body>
+
+</html>
